@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { createClient, type MicroCMSQueries } from 'microcms-js-sdk';
 import type { PostData } from '@/types';
 
@@ -6,16 +7,16 @@ const client = createClient({
   apiKey: process.env.CMS_API_KEY ?? '',
 });
 
-export async function getList(queries?: MicroCMSQueries) {
-  return await client.getList<PostData>({
+export const getList = cache(async (queries?: MicroCMSQueries) =>
+  client.getList<PostData>({
     endpoint: 'post',
     queries,
-  });
-}
+  })
+);
 
-export async function getPost(contentId?: string) {
-  return await client.get<PostData>({
+export const getPost = cache(async (contentId?: string) =>
+  client.get<PostData>({
     endpoint: 'post',
     contentId,
-  });
-}
+  })
+);

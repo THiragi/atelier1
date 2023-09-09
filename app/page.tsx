@@ -1,21 +1,15 @@
-import Image from 'next/image';
+import { getList } from '@/lib/microcms';
 
-export default function Home() {
+export default async function Home() {
+  const { contents } = await getList({ limit: 10 });
   return (
     <div>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Image
-          src="/vercel.svg"
-          alt="Vercel Logo"
-          width={100}
-          height={24}
-          priority
-        />
-      </a>
+      <h1>me basta con saber</h1>
+      <ul>
+        {contents.map((content) => (
+          <li key={content.id}>{content.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
