@@ -1,7 +1,7 @@
 import { getList } from '@/lib/microcms';
 
 export default async function Home() {
-  const { contents } = await getList({ limit: 10 });
+  const { contents } = await getList({ limit: 100 });
   return (
     <div>
       <h1>me basta con saber</h1>
