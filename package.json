@@ -20,5 +20,8 @@
     "react-dom": "^18.2.0",
     "sass": "^1.69.5",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@fontsource/fira-mono": "^5.0.8"
   }
 }
